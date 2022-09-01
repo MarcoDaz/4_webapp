@@ -12,10 +12,6 @@ describe AlbumRepository do
     reset_albums_table
   end
 
-  after(:each) do 
-    reset_albums_table
-  end
-
   it 'finds all albums' do
     repo = AlbumRepository.new
 

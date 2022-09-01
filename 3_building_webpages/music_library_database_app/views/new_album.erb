@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>New Album</title>
+  </head>
+  <body>
+    <h3><a href="/albums">Back to Albums</a></h3>
+    <h1>Create New Album</h1>
+    <form action="/albums" method="POST">
+      <label for="title">Title:</label><br>
+      <input type="text" name="title" id="title" required><br><br>
+
+      <label for="release_year">Release Year:</label><br>
+      <input type="number" name="release_year" id="release_year" required><br><br>
+      
+      <label for="artist_id">Artist ID:</label><br>
+      <input type="number" name="artist_id" id="artist_id" required><br><br>
+
+      <input type="submit" value="Create Album">
+    </form>
+  </body>
+</html>

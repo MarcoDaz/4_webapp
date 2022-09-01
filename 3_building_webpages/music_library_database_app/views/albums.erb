@@ -1,14 +1,17 @@
 <!-- GET /albums -->
 
 <html>
-  <head></head>
+  <head>
+    <title>Albums</title>
+  </head>
   <body>
     <h1>Albums</h1>
-
+    <a href="/albums/new"><button>Add Album</button></a>
+    <h4>Add New Album</h4>
     <% @albums.each do |album| %>
       <div>
         Title: <a href="<%= "albums/#{album.id}" %>"><%= album.title %></a><br>
-        Released: <%= album.release_year %>
+        Release Year: <%= album.release_year %>
       </div>
       <br>
     <% end %>
