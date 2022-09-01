@@ -127,14 +127,6 @@ describe Application do
     end
   end
   
-  
-
-  
-
-  
-
-
-
   context 'GET /artists' do
     it 'should return the list of artists with links to their html pages' do
       response = get('/artists')
@@ -160,6 +152,19 @@ describe Application do
     end
   end
 
+  context 'GET /artists/new' do
+    it 'returns html form for adding an artist' do
+      response = get('/artists/new')
+      body = response.body
+
+      expect(response.status).to eq 200
+      expect(body).to include '<h1>Create New Artist</h1>'
+      expect(body).to include '<form action="/artists" method="POST">'
+      expect(body).to include '<input type="text" name="name" id="name" required>'
+      expect(body).to include '<input type="text" name="genre" id="genre" required>'
+      expect(body).to include '<input type="submit" value="Create Artist">'
+    end
+  end
   context 'GET /artists/:id' do
     it 'should return a specific artist html' do
       response = get('/artists/2')
@@ -173,6 +178,15 @@ describe Application do
   end
 
   context 'POST /artists' do
+    it 'validates artist parameters' do
+      response = post('/artists',
+        invalid_param: 'invalid',
+        another_invalid_thing: 123,
+      )
+
+      expect(response.status).to eq 400
+    end
+
     it 'should create a new artist' do
       response = post('/artists',
         name: 'Wild nothing',
@@ -180,7 +194,7 @@ describe Application do
       )
   
       expect(response.status).to eq 200
-      expect(response.body).to eq ''
+      expect(response.body).to include '<h1>You Added Artist: Wild nothing</h1>'
       
       # Check newest artist added in database
       repo = ArtistRepository.new

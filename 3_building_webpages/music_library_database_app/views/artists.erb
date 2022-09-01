@@ -4,7 +4,7 @@
   <head></head>
   <body>
     <h1>Artists</h1>
-
+    <a href="/artists/new"><button>Add Artist</button></a><br><br>
     <% @artists.each do |artist| %>
       <a href="<%= "/artists/#{artist.id}" %>"><%= artist.name %></a><br>
     <% end %>

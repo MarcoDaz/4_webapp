@@ -6,8 +6,7 @@
   </head>
   <body>
     <h1>Albums</h1>
-    <a href="/albums/new"><button>Add Album</button></a>
-    <h4>Add New Album</h4>
+    <a href="/albums/new"><button>Add Album</button></a><br><br>
     <% @albums.each do |album| %>
       <div>
         Title: <a href="<%= "albums/#{album.id}" %>"><%= album.title %></a><br>
