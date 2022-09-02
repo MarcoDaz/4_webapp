@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset=utf-8>
+  <title>Greeter app</title>
+</head>
+<body>
+  <h1>Greeter app</h1>
+
+  <form action="/hello" method="POST">
+    Please enter your name:
+    <input type="text" 
+           name="name"
+           pattern="[a-zA-Z]{2,30}"
+           title="only use a-z, A-Z characters, with length 2 - 30"
+           required />
+
+    <input type="submit" />
+  </form>
+</body>
+</html>
